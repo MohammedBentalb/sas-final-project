@@ -13,7 +13,7 @@ struct Avion {
     int idAvion;
     char model[100];
     int capacite;
-    char ststus[20];
+    char status[20];
     char dateEntree[8];
 };
 
@@ -25,7 +25,8 @@ struct Aeroport {
 
 extern struct Avion avions[100];
 extern struct Aeroport aeroport[100];
-
+extern int planeID;
+extern int airpotID;
 
 
 /*helpers*/
@@ -35,8 +36,8 @@ void clearInput();
 
 
 /*primary functions*/
-void gestionAvion();
-void gestionAeoport();
+void managePlane();
+void manageAirport();
 
 
 #endif 

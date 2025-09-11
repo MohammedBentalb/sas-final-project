@@ -1,7 +1,7 @@
 #include "header.h"
 
 
-void gestionAvion(){
+void managePlane(){
     int userChoice = -1;
     bool berakIt = false;
     do

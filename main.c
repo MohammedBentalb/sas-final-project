@@ -3,6 +3,8 @@
 
 struct Avion avions[100] = {0};
 struct Aeroport aeroport[100] = {0};
+int planeId = 1;
+int airportId = 0;
 
 
 int main(){
@@ -25,10 +27,10 @@ int main(){
         switch (userChoise)
         {
         case 1:
-            gestionAvion();
+            managePlane();
             break;
         case 2:
-            gestionAeoport();
+            manageAirport();
             break;
         case 0:
             printf("See U Soon\n");
