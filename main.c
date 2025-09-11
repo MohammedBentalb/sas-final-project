@@ -1,10 +1,49 @@
-#include <stdio.h>
+#include "header.h"
+
+
+struct Avion avions[100] = {0};
+struct Aeroport aeroport[100] = {0};
 
 
 int main(){
 
-printf("Hi there");
+    bool breakIt = false;
+    int userChoise = -1;
 
+    
+
+    do
+    {
+        printf("-----------------------------------------------\n");
+        printf("                  Beinvenue                     \n");
+        printf("1.gestion des Avions.\n");
+        printf("2.gestion de l'airoport.\n");
+        printf("0.EXIT.");
+        printf("-----------------------------------------------\n");
+        userChoise = acceptUserInput();
+
+        switch (userChoise)
+        {
+        case 1:
+            gestionAvion();
+            break;
+        case 2:
+            gestionAeoport();
+            break;
+        case 0:
+            printf("See U Soon\n");
+            breakIt = true;
+            break;
+        
+        default:
+            printf("Choix incorect!!!\n");
+            break;
+        }
+
+
+    } while (!breakIt);
+    
+    
 
     return 0;
 }
