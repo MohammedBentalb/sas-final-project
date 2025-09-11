@@ -47,6 +47,7 @@ void searchForPlane();
 void sortplane();
 void listAirportInfo();
 void calculateCoef();
+void statistics();
 
 
 void manageAirport();

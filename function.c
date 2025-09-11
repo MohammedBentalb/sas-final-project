@@ -110,6 +110,7 @@ void deletePlane(){
         avions[j] = avions[j + 1];
     }
 
+    // to de , solve
 
 
     // removing the plaine if from the airport and decrementing the the number of plains available
@@ -241,7 +242,59 @@ void calculateCoef(){
     result = ((float)dispo / numberOfPlanesAvilable) * 100;
 
     printf("Le nomre d'aviaon disponible est: %d\n", dispo);
-    printf("Le coefficient d'occupation du parc est de %.2f%%.\n", result);
+    printf("Le pourcentage d’avions disponibles dans l’aéroport: %.2f%%.\n", result);
+    printf("Le coefficient sous forme numérique: %.2f%%.\n", result / 100.0);
 
 }
 
+void statistics(){
+    int i = 0, dispo = 0, maintenace= 0, vol = 0;
+    int count = 0, minIndex = 0, maxIndex = 0;
+    
+    while(i < MAX_PLANE_NUMBER){
+        if((dispo + maintenace + vol) == numberOfPlanesAvilable) 
+            break;
+        if(strcasecmp(avions[i].status, "Disponible") == 0) 
+            dispo++;
+        if(strcasecmp(avions[i].status, "Maintenance") == 0) 
+            maintenace++;
+        if(strcasecmp(avions[i].status, "En vole") == 0) 
+            vol++;
+        i++;
+    }
+
+
+    for(i = 1; i < MAX_PLANE_NUMBER - 1; i++){
+        if(count == numberOfPlanesAvilable)
+            break;
+
+        if(avions[maxIndex].capacite < avions[i].capacite && avions[i].modele[0] != '\0'){
+            count++;
+            maxIndex = i;
+        }
+        if(avions[minIndex].capacite > avions[i].capacite && avions[i].modele[0] != '\0'){
+            count++;
+            minIndex = i;
+        }
+    }
+
+    printf("\n");
+    printf("-------------------------------------------\n");
+    printf("--Nombre totale d'avion dans le parc: %d\n", numberOfPlanesAvilable);
+    printf("--Nombre d'avions par status: \n");
+    printf("----Disponible: %d\n", dispo);
+    printf("----Maintenance: %d\n", maintenace);
+    printf("----En vol: %d\n", vol);
+    printf("--Capacity totale de la flotte: %d\n", MAX_PLANE_NUMBER);
+    printf("--L'avion ayant la plus grande capacité: \n");
+    printf("----ID: %d\n", avions[minIndex].idAvion);
+    printf("----Modele: %s\n", avions[maxIndex].modele);
+    printf("----Capacite: %d\n", avions[maxIndex].capacite);
+    printf("----Status: %s\n", avions[maxIndex].status);
+    printf("--L'avion ayant la plus petite capacité: \n");
+    printf("----ID: %d\n", avions[minIndex].idAvion);
+    printf("----Modele: %s\n", avions[minIndex].modele);
+    printf("----Capacite: %d\n", avions[minIndex].capacite);
+    printf("----Status: %s\n", avions[minIndex].status);
+    printf("-------------------------------------------\n");
+}
