@@ -30,6 +30,7 @@ extern int planeID;
 extern int airpotID;
 
 
+
 /*helpers*/
 int acceptUserInput();
 void clearInput();
@@ -42,6 +43,7 @@ void addPlane();
 void listPlane();
 void deletePlane();
 void searchForPlane();
+void sortplane();
 
 
 void manageAirport();

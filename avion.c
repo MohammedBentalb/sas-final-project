@@ -42,6 +42,7 @@ void managePlane(){
             break;
         case 6:
             printf("--->Tries les avions (par capacite, par modele alphabetique).\n");
+            sortplane();   
             break;
         case 0:
             printf("--->EXIT TO MAIN MENU.\n");

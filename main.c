@@ -1,13 +1,21 @@
 #include "header.h"
 
+    struct Avion avions[100] = {
+        {1, "aaa", 15, "Disponible", "rtd"},
+        {2, "ccc", 19, "Disponible", "arte"},
+        {3, "bbb", 6, "Disponible", "awef"},
+        {4, "hhh", 15, "Disponible", "wefd"},
+        {5, "eeee", 8, "Disponible", "aed"},
+    };
+    struct Aeroport aeroport[MAX_AIRPORT_NUMBER] = {0};
 
-struct Avion avions[MAX_PLANE_NUMBER] = {0};
-struct Aeroport aeroport[MAX_AIRPORT_NUMBER] = {0};
-int planeID= 1;
-int airportI = 0;
+    int planeID= 6;
+    int airportI = 0;
+
 
 
 int main(){
+
 
     bool breakIt = false;
     int userChoise = -1;

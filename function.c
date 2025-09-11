@@ -56,7 +56,7 @@ void addPlane(){
 
 void listPlane(){
     int i = 0, count = 0;
-    while(avions[i].modele[0] != '\0'){
+     while(avions[i].modele[0] != '\0'){
         printf("\n");
         printf("\n");
         printf("--------------------------------------------------\n");
@@ -106,19 +106,25 @@ void deletePlane(){
 }
 
 void searchForPlane(){
-    int userChoise = 0;
+    int userChoise = 0, i = 0, id = 0;
+    char modele[100];
+
     printf("Que voulez vous utiliser come un utile de recherche (1.id, 2.modele): ");
     userChoise = acceptUserInput();
 
-    switch (userChoise)
-    {
-    case 1:
-        int i = 0, id = 0;
-        printf("Donnez l'ID de l'avion: ");
+    if(userChoise == 1){
         id = acceptUserInput();
+    } else if(userChoise == 2){
+        printf("Donnez le model de l'avion: ");
+        scanf("%[^\n]", modele);
+    } else{
+        printf("Choix Invalid!!!\n");
+        return;
+    }
 
-        while (i < MAX_PLANE_NUMBER && avions[i].idAvion != 0) {
-            if(avions[i].idAvion == id){
+
+    while ((i < MAX_PLANE_NUMBER && avions[i].idAvion != 0)) {
+            if(userChoise == 1 ? (avions[i].idAvion == id) : (strcasecmp(avions[i].modele, modele) == 0)){
                 printf("-----------------------------\n");
                 printf("---N: %d\n", i + 1);
                 printf("---Le ID de l'Avion: %d\n", avions[i].idAvion);
@@ -131,34 +137,37 @@ void searchForPlane(){
             }
             i++;
         }
+        printf("\n");
+}
 
-        break;
-    case 2:
-        char modele[100];
-        printf("Donnez le model de l'avion: ");
-        scanf("%[^\n]", modele);
+void sortplane(){
+    int i = 0, userChoice = 0; 
 
-        while (i < MAX_PLANE_NUMBER && avions[i].modele[0] != '\0') {
-            if(strcasecmp(avions[i].modele, modele) == 0){
-                printf("-----------------------------\n");
-                printf("---N: %d\n", i + 1);
-                printf("---Le ID de l'Avion: %d\n", avions[i].idAvion);
-                printf("---Le modele de l'Avion: %s\n", avions[i].modele);
-                printf("---La capacite de l'Avion: %d\n", avions[i].capacite);
-                printf("---Le status de l'Avion: %s\n", avions[i].status);
-                printf("---La date d'entree de l'Avion: %s\n", avions[i].dateEntree);
-                printf("-----------------------------\n");
-            }
+    printf("Voulez vous triez les avions pas 1.Capacite ou 2.Model: ");
+    userChoice = acceptUserInput();
+
+    while(i < MAX_PLANE_NUMBER && avions[i].modele[0] != '\0'){
             i++;
         }
 
-        break;
-    
-    default:
-        break;
-    }
+        if(userChoice < 1 || userChoice > 2){
+            printf("Choix invalid!!");
+            return;
+        }
 
+        for(int j = 0; j < i - 1; j++){
+            for(int z = 0; z < i - j - 1; z++){
+                if(userChoice == 1 ? (avions[z].capacite > avions[z + 1].capacite) : (strcasecmp(avions[z].modele, avions[z + 1].modele) > 0)){
+                    struct Avion tmp = avions[z];
+                    avions[z] = avions[z + 1];
+                    avions[z + 1] = tmp;
+                }
+            }
+        }
+
+        
+   
+    listPlane();
+    printf("Choix invalide!!\n");
 
 }
-
-
