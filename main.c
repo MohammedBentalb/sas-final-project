@@ -1,8 +1,8 @@
 #include "header.h"
 
 
-struct Avion avions[100] = {0};
-struct Aeroport aeroport[100] = {0};
+struct Avion avions[MAX_PLANE_NUMBER] = {0};
+struct Aeroport aeroport[MAX_AIRPORT_NUMBER] = {0};
 int planeID= 1;
 int airportI = 0;
 

@@ -30,6 +30,7 @@ void managePlane(){
             break;
         case 3:    
             printf("--->Suprimer un avion.\n");
+            deletePlane();
             break;
         case 4:
             printf("--->Afficher la list des avions.\n");
@@ -37,6 +38,7 @@ void managePlane(){
             break;
         case 5:
             printf("--->Rechercher un avion (par son id ou par model).\n");
+            searchForPlane();
             break;
         case 6:
             printf("--->Tries les avions (par capacite, par modele alphabetique).\n");

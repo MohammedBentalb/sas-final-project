@@ -77,3 +77,88 @@ void listPlane(){
     }
     printf("La fin de la list.\n");
 }
+
+void deletePlane(){
+    int i = 0, target = 0;
+    bool found = false;
+
+    printf("Donner de l'ID de l'avoin que vouvolez supprimer: ");
+    target = acceptUserInput();
+
+    while(i <  MAX_PLANE_NUMBER && avions[i].modele[0] != '\0'){        
+        if(avions[i].idAvion == target){
+            found = true;
+            break;
+        }
+        i++;
+    }
+
+    if(!found){
+        printf("L'avion que vous cherchez n'existe pas.\n");
+        return;
+    }
+
+    for(int j = i; j < MAX_PLANE_NUMBER - 1; j++){
+        avions[i] = avions[i + 1];
+    }
+
+    printf("L'avion a été supprimé avec succès!!");
+}
+
+void searchForPlane(){
+    int userChoise = 0;
+    printf("Que voulez vous utiliser come un utile de recherche (1.id, 2.modele): ");
+    userChoise = acceptUserInput();
+
+    switch (userChoise)
+    {
+    case 1:
+        int i = 0, id = 0;
+        printf("Donnez l'ID de l'avion: ");
+        id = acceptUserInput();
+
+        while (i < MAX_PLANE_NUMBER && avions[i].idAvion != 0) {
+            if(avions[i].idAvion == id){
+                printf("-----------------------------\n");
+                printf("---N: %d\n", i + 1);
+                printf("---Le ID de l'Avion: %d\n", avions[i].idAvion);
+                printf("---Le modele de l'Avion: %s\n", avions[i].modele);
+                printf("---La capacite de l'Avion: %d\n", avions[i].capacite);
+                printf("---Le status de l'Avion: %s\n", avions[i].status);
+                printf("---La date d'entree de l'Avion: %s\n", avions[i].dateEntree);
+                printf("-----------------------------\n");
+                break;
+            }
+            i++;
+        }
+
+        break;
+    case 2:
+        char modele[100];
+        printf("Donnez le model de l'avion: ");
+        scanf("%[^\n]", modele);
+
+        while (i < MAX_PLANE_NUMBER && avions[i].modele[0] != '\0') {
+            if(strcasecmp(avions[i].modele, modele) == 0){
+                printf("-----------------------------\n");
+                printf("---N: %d\n", i + 1);
+                printf("---Le ID de l'Avion: %d\n", avions[i].idAvion);
+                printf("---Le modele de l'Avion: %s\n", avions[i].modele);
+                printf("---La capacite de l'Avion: %d\n", avions[i].capacite);
+                printf("---Le status de l'Avion: %s\n", avions[i].status);
+                printf("---La date d'entree de l'Avion: %s\n", avions[i].dateEntree);
+                printf("-----------------------------\n");
+            }
+            i++;
+        }
+
+        break;
+    
+    default:
+        break;
+    }
+
+
+}
+
+

@@ -7,7 +7,8 @@
 #include <strings.h>
 #include <ctype.h>
 
-
+#define MAX_PLANE_NUMBER 100
+#define MAX_AIRPORT_NUMBER 100
 
 struct Avion {
     int idAvion;
@@ -39,6 +40,8 @@ void clearInput();
 void managePlane();
 void addPlane();
 void listPlane();
+void deletePlane();
+void searchForPlane();
 
 
 void manageAirport();
