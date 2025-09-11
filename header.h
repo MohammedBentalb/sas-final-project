@@ -46,6 +46,7 @@ void deletePlane();
 void searchForPlane();
 void sortplane();
 void listAirportInfo();
+void calculateCoef();
 
 
 void manageAirport();

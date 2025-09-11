@@ -9,6 +9,7 @@ void manageAirport(){
         printf("-------------------------------------------\n");
         printf("bienvenue, vous avez choisi la gestion de l'aeroport \n");
         printf("1.Afficher les informations de l'aeroport et de sa flotte.\n");      
+        printf("1.Afficher les .\n");      
         printf("0.EXIT TO MAIN MENU.\n");       
         printf("-------------------------------------------\n");
         userChoice = acceptUserInput();
@@ -20,8 +21,9 @@ void manageAirport(){
             printf("--->Afficher les information de l'aeroport.\n");
             listAirportInfo();
             break;
-        case 4:
+        case 2:
             printf("--->le percentage d'avion disponible.\n");
+            calculateCoef();
             break;
         case 0:
             printf("--->EXIT TO MAIN MENU.\n");
@@ -34,3 +36,5 @@ void manageAirport(){
     } while (!berakIt);
     
 }
+
+

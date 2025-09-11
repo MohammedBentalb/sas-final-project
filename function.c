@@ -20,8 +20,8 @@ void addPlane(){
         printf("-->Quelle est la capacite de l'avion: ");
         planeCapacity = acceptUserInput();
         
-        printf("-->Quelle est le status de l'avion: ");
-        userStatusChoice = acceptUserInput();        
+        printf("-->Quelle est le status de l'avion: (0.Disponible 1.Maintenance 2.En vol)");
+        userStatusChoice = acceptUserInput();
         
         printf("-->donnez la date d''entree de l'avion: ");
         scanf("%[^\n]", planeEntranceDate);
@@ -46,7 +46,7 @@ void addPlane(){
         avions[numberOfPlanesAvilable].capacite = planeCapacity;
         strcpy(avions[numberOfPlanesAvilable].dateEntree, planeEntranceDate);
         
-        if(userStatusChoice> 3 && userStatusChoice){
+        if(userStatusChoice > 2 || userStatusChoice < 0 ){
             printf("!!!!!!!!!!WARNING!!!!!!!!!\n");
             printf("VOUS AVEZ ENTRE UN CHOIX INVALIDE POUR LE STATUT, IL A DONC ÉTÉ PARAMÉTRÉ SUR \"EN MAINTENANCE\". VOUS POUVEZ LE MODIFIER PLUS TARD.\n");
             printf("!!!!!!!!!!WARNING!!!!!!!!!\n");
@@ -230,6 +230,18 @@ void listAirportInfo(){
 
 }
 
+void calculateCoef(){
+    int coeff = 0, dispo = 0;
+    float result = 0.0;
 
+    for(int i = 0; i < MAX_PLANE_NUMBER; i++){
+        if(strcasecmp(avions[i].status, "Disponible") == 0) dispo++;
+    }
 
+    result = ((float)dispo / numberOfPlanesAvilable) * 100;
+
+    printf("Le nomre d'aviaon disponible est: %d\n", dispo);
+    printf("Le coefficient d'occupation du parc est de %.2f%%.\n", result);
+
+}
 
