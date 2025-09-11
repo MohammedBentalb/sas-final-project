@@ -31,6 +31,15 @@ void addPlane(){
 
         printf("\n");
 
+        // ading plane id to the airport flotte and  incrementing the number of planess
+        for(int i = 0; i < MAX_PLANE_NUMBER; i++){
+            if(aeroport.flotte[i] == 0){
+                aeroport.flotte[i] = planeID;
+                break;
+            }
+        }
+        aeroport.nbAvion += 1;
+
         avions[numberOfPlanesAvilable].idAvion = planeID++;
         strcpy(avions[numberOfPlanesAvilable].modele, planeModele);
         strcpy(avions[numberOfPlanesAvilable].status, userStatusChoice > 2 || userStatusChoice < 0 ? status[1] : status[userStatusChoice]);
@@ -42,6 +51,8 @@ void addPlane(){
             printf("VOUS AVEZ ENTRE UN CHOIX INVALIDE POUR LE STATUT, IL A DONC ÉTÉ PARAMÉTRÉ SUR \"EN MAINTENANCE\". VOUS POUVEZ LE MODIFIER PLUS TARD.\n");
             printf("!!!!!!!!!!WARNING!!!!!!!!!\n");
         }
+
+
 
         userChoice--;
         numberOfPlanesAvilable++;
@@ -98,6 +109,17 @@ void deletePlane(){
     for(int j = i; j < numberOfPlanesAvilable; j++){
         avions[j] = avions[j + 1];
     }
+
+
+
+    // removing the plaine if from the airport and decrementing the the number of plains available
+    for(int p = 0; p < MAX_PLANE_NUMBER; p++){
+        if(aeroport.flotte[p] == target){
+            aeroport.flotte[p] = 0;
+            break;
+        }
+    }
+    aeroport.nbAvion -= 1;
 
     strcpy(avions[numberOfPlanesAvilable].modele , "");
     strcpy(avions[numberOfPlanesAvilable].dateEntree, "");
@@ -173,3 +195,41 @@ void sortplane(){
     printf("Choix invalide!!\n");
 
 }
+
+void listAirportInfo(){
+
+    int i = 0;
+
+    printf("\n");
+    printf("--------------------------------------------\n");
+    printf("le nom de l'aeroport est: %s\n", aeroport.name);
+    printf("le nomre d'avions a l'aeroport est: %d\n", aeroport.nbAvion);
+    for(i = 0; i < MAX_PLANE_NUMBER; i++){
+        if(i == 0){
+            printf("Les avions present au aeroport sont: \n");
+        }
+
+        if(aeroport.flotte[i] == 0) continue;
+
+        for(int j = 0; j < MAX_PLANE_NUMBER ; j++){
+            if(avions[j].idAvion == aeroport.flotte[i]){
+                printf("-----------------------------\n");
+                printf("---N: %d\n", i + 1);
+                printf("---Le ID de l'Avion: %d\n", avions[j].idAvion);
+                printf("---Le modele de l'Avion: %s\n", avions[j].modele);
+                printf("---La capacite de l'Avion: %d\n", avions[j].capacite);
+                printf("---Le status de l'Avion: %s\n", avions[j].status);
+                printf("---La date d'entree de l'Avion: %s\n", avions[j].dateEntree);
+                printf("-----------------------------\n");
+                printf("\n");
+            }
+        }
+    }
+    printf("-------------end of info---------\n");
+
+
+}
+
+
+
+

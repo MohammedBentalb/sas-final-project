@@ -45,6 +45,7 @@ void listPlane();
 void deletePlane();
 void searchForPlane();
 void sortplane();
+void listAirportInfo();
 
 
 void manageAirport();

@@ -8,11 +8,7 @@ void manageAirport(){
     {
         printf("-------------------------------------------\n");
         printf("bienvenue, vous avez choisi la gestion de l'aeroport \n");
-        printf("1.Ajouter un avion.\n");
-        printf("2.Supprimer un avion.\n");
-        printf("3.Afficher les informations de l'aeroport et de sa flotte.\n");
-        printf("4.Rechercher un avion (par son id ou par model).\n");
-        printf("5.Tries les avions (par capacite, par modele alphabetique).\n");        
+        printf("1.Afficher les informations de l'aeroport et de sa flotte.\n");      
         printf("0.EXIT TO MAIN MENU.\n");       
         printf("-------------------------------------------\n");
         userChoice = acceptUserInput();
@@ -22,6 +18,7 @@ void manageAirport(){
         {
         case 1:
             printf("--->Afficher les information de l'aeroport.\n");
+            listAirportInfo();
             break;
         case 4:
             printf("--->le percentage d'avion disponible.\n");
