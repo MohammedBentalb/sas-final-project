@@ -23,6 +23,7 @@ void managePlane(){
         {
         case 1:
             printf("--->Ajouter un avion.\n");
+            addPlane();
             break;
         case 2:
             printf("--->Modifier un avion.\n");
@@ -32,6 +33,7 @@ void managePlane(){
             break;
         case 4:
             printf("--->Afficher la list des avions.\n");
+            listPlane();
             break;
         case 5:
             printf("--->Rechercher un avion (par son id ou par model).\n");

@@ -11,7 +11,7 @@
 
 struct Avion {
     int idAvion;
-    char model[100];
+    char modele[100];
     int capacite;
     char status[20];
     char dateEntree[8];
@@ -37,6 +37,10 @@ void clearInput();
 
 /*primary functions*/
 void managePlane();
+void addPlane();
+void listPlane();
+
+
 void manageAirport();
 
 

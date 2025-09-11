@@ -3,8 +3,8 @@
 
 struct Avion avions[100] = {0};
 struct Aeroport aeroport[100] = {0};
-int planeId = 1;
-int airportId = 0;
+int planeID= 1;
+int airportI = 0;
 
 
 int main(){
