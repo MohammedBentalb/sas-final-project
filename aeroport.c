@@ -21,19 +21,10 @@ void manageAirport(){
          switch (userChoice)
         {
         case 1:
-            printf("--->Ajouter un aeroport.\n");
-            break;
-        case 2:    
-            printf("--->Suprimer un aeroport.\n");
-            break;
-        case 3:
-            printf("--->Afficher la list des aeroports.\n");
+            printf("--->Afficher les information de l'aeroport.\n");
             break;
         case 4:
-            printf("--->Rechercher un aeroport (par son id ou par model).\n");
-            break;
-        case 5:
-            printf("--->Tries les aeroports (par capacite, par modele alphabetique).\n");
+            printf("--->le percentage d'avion disponible.\n");
             break;
         case 0:
             printf("--->EXIT TO MAIN MENU.\n");

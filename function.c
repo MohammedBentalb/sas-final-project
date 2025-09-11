@@ -31,15 +31,11 @@ void addPlane(){
 
         printf("\n");
 
-        while(avions[i].modele[0] != '\0'){
-            i++;
-        }
-
-        avions[i].idAvion = planeID++;
-        strcpy(avions[i].modele, planeModele);
-        strcpy(avions[i].status, userStatusChoice > 2 || userStatusChoice < 0 ? status[1] : status[userStatusChoice]);
-        avions[i].capacite = planeCapacity;
-        strcpy(avions[i].dateEntree, planeEntranceDate);
+        avions[numberOfPlanesAvilable].idAvion = planeID++;
+        strcpy(avions[numberOfPlanesAvilable].modele, planeModele);
+        strcpy(avions[numberOfPlanesAvilable].status, userStatusChoice > 2 || userStatusChoice < 0 ? status[1] : status[userStatusChoice]);
+        avions[numberOfPlanesAvilable].capacite = planeCapacity;
+        strcpy(avions[numberOfPlanesAvilable].dateEntree, planeEntranceDate);
         
         if(userStatusChoice> 3 && userStatusChoice){
             printf("!!!!!!!!!!WARNING!!!!!!!!!\n");
@@ -48,6 +44,7 @@ void addPlane(){
         }
 
         userChoice--;
+        numberOfPlanesAvilable++;
         clearInput();
 
     }
@@ -85,7 +82,7 @@ void deletePlane(){
     printf("Donner de l'ID de l'avoin que vouvolez supprimer: ");
     target = acceptUserInput();
 
-    while(i <  MAX_PLANE_NUMBER && avions[i].modele[0] != '\0'){        
+    while(i <  numberOfPlanesAvilable ){        
         if(avions[i].idAvion == target){
             found = true;
             break;
@@ -98,11 +95,16 @@ void deletePlane(){
         return;
     }
 
-    for(int j = i; j < MAX_PLANE_NUMBER - 1; j++){
-        avions[i] = avions[i + 1];
+    for(int j = i; j < numberOfPlanesAvilable; j++){
+        avions[j] = avions[j + 1];
     }
 
+    strcpy(avions[numberOfPlanesAvilable].modele , "");
+    strcpy(avions[numberOfPlanesAvilable].dateEntree, "");
+    strcpy(avions[numberOfPlanesAvilable].status, "");
+
     printf("L'avion a été supprimé avec succès!!");
+    numberOfPlanesAvilable--;
 }
 
 void searchForPlane(){
@@ -123,7 +125,7 @@ void searchForPlane(){
     }
 
 
-    while ((i < MAX_PLANE_NUMBER && avions[i].idAvion != 0)) {
+    while (i < numberOfPlanesAvilable) {
             if(userChoise == 1 ? (avions[i].idAvion == id) : (strcasecmp(avions[i].modele, modele) == 0)){
                 printf("-----------------------------\n");
                 printf("---N: %d\n", i + 1);

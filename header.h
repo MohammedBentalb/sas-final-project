@@ -8,7 +8,7 @@
 #include <ctype.h>
 
 #define MAX_PLANE_NUMBER 100
-#define MAX_AIRPORT_NUMBER 100
+#define MAX_AIRPORT_NUMBER 1
 
 struct Avion {
     int idAvion;
@@ -25,7 +25,8 @@ struct Aeroport {
 };
 
 extern struct Avion avions[100];
-extern struct Aeroport aeroport[100];
+extern struct Aeroport aeroport;
+extern int numberOfPlanesAvilable;
 extern int planeID;
 extern int airpotID;
 

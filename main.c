@@ -7,10 +7,13 @@
         {4, "hhh", 15, "Disponible", "wefd"},
         {5, "eeee", 8, "Disponible", "aed"},
     };
-    struct Aeroport aeroport[MAX_AIRPORT_NUMBER] = {0};
+    struct Aeroport aeroport = {
+        "Sidi Mohammed", {1, 2, 3, 4, 5}, 5
+    };
 
     int planeID= 6;
     int airportI = 0;
+    int numberOfPlanesAvilable = 5;
 
 
 
