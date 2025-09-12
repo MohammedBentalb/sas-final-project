@@ -20,11 +20,11 @@ struct Avion {
 
 struct Aeroport {
     char name[100];
-    int flotte[100];
+    int flotte[MAX_PLANE_NUMBER];
     int nbAvion;
 };
 
-extern struct Avion avions[100];
+extern struct Avion avions[MAX_PLANE_NUMBER];
 extern struct Aeroport aeroport;
 extern int numberOfPlanesAvilable;
 extern int planeID;

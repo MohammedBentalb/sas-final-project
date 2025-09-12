@@ -30,10 +30,10 @@ void addPlane(){
         printf("-->Quelle est la capacite de l'avion: ");
         planeCapacity = acceptUserInput();
         
-        printf("-->Quelle est le status de l'avion: (0.Disponible 1.Maintenance 2.En vol)");
+        printf("-->Quelle est le status de l'avion: (0.Disponible 1.Maintenance 2.En vol): ");
         userStatusChoice = acceptUserInput();
         
-        printf("-->donnez la date d''entree de l'avion: ");
+        printf("-->donnez la date d''entree de l'avion (format 24h. ex: 13:30): ");
         scanf("%[^\n]", planeEntranceDate);
         
         printf("%s\n", planeModele);
@@ -42,7 +42,7 @@ void addPlane(){
         printf("\n");
 
         // ading plane id to the airport flotte and  incrementing the number of planess
-        for(int i = 0; i < MAX_PLANE_NUMBER; i++){
+        for(int i = 0; i < MAX_PLANE_NUMBER - 1; i++){
             if(aeroport.flotte[i] == 0){
                 aeroport.flotte[i] = planeID;
                 break;
@@ -215,14 +215,14 @@ void listAirportInfo(){
     printf("--------------------------------------------\n");
     printf("le nom de l'aeroport est: %s\n", aeroport.name);
     printf("le nomre d'avions a l'aeroport est: %d\n", aeroport.nbAvion);
-    for(i = 0; i < MAX_PLANE_NUMBER; i++){
+    for(i = 0; i < MAX_PLANE_NUMBER - 1; i++){
         if(i == 0){
             printf("Les avions present au aeroport sont: \n");
         }
 
         if(aeroport.flotte[i] == 0) continue;
 
-        for(int j = 0; j < MAX_PLANE_NUMBER ; j++){
+        for(int j = 0; j < MAX_PLANE_NUMBER - 1 ; j++){
             if(avions[j].idAvion == aeroport.flotte[i]){
                 printf("-----------------------------\n");
                 printf("---N: %d\n", i + 1);
@@ -295,7 +295,7 @@ void statistics(){
     printf("----Disponible: %d\n", dispo);
     printf("----Maintenance: %d\n", maintenace);
     printf("----En vol: %d\n", vol);
-    printf("Capacity totale de la flotte: %d\n", MAX_PLANE_NUMBER);
+    printf("Capacity totale de la flotte: %d\n", MAX_PLANE_NUMBER - 1);
     printf("L'avion ayant la plus grande capacite: \n");
     printf("----ID: %d\n", avions[minIndex].idAvion);
     printf("----Modele: %s\n", avions[maxIndex].modele);
