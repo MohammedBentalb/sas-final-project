@@ -1,11 +1,11 @@
 #include "header.h"
 
     struct Avion avions[100] = {
-        {1, "aaa", 15, "Disponible", "rtd"},
-        {2, "ccc", 19, "Disponible", "arte"},
-        {3, "bbb", 6, "Disponible", "awef"},
-        {4, "hhh", 15, "Disponible", "wefd"},
-        {5, "eeee", 8, "Disponible", "aed"},
+        {1, "Airbus A320", 15, "Disponible", "rtd"},
+        {2, "Boeing 777", 19, "Disponible", "arte"},
+        {3, "Boing 256", 6, "Disponible", "awef"},
+        {4, "Airbus A350", 15, "Disponible", "wefd"},
+        {5, "Embraer E190", 8, "Disponible", "aed"},
     };
     struct Aeroport aeroport = {
         "Sidi Mohammed", {1, 2, 3, 4, 5}, 5

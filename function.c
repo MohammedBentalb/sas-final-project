@@ -7,12 +7,22 @@ void addPlane(){
     char status[][20] = {"Disponible", "En maintenance", "En vole"};
     int userStatusChoice = -1, planeCapacity = 9;
     int i = 0;
+    
+    if(numberOfPlanesAvilable == 99){
+        printf("the airport has reached the limit, consider deleting a plain to add a new one");
+        return;
+    }
 
     printf("Combier d'avion vous voulez ajoutez: ");
     userChoice = acceptUserInput();
 
     while(userChoice > 0){
         userStatusChoice = -1;
+
+        if(numberOfPlanesAvilable == 99){
+            printf("the airport has reached the limit, consider deleting a plain to add a new one");
+            return;
+        }
 
         printf("-->Donnez le modele de l'avion: ");
         scanf("%[^\n]", planeModele);
@@ -242,8 +252,8 @@ void calculateCoef(){
     result = ((float)dispo / numberOfPlanesAvilable) * 100;
 
     printf("Le nomre d'aviaon disponible est: %d\n", dispo);
-    printf("Le pourcentage d’avions disponibles dans l’aéroport: %.2f%%.\n", result);
-    printf("Le coefficient sous forme numérique: %.2f%%.\n", result / 100.0);
+    printf("Le pourcentage d'avions disponibles dans l'aeroport: %.2f%%.\n", result);
+    printf("Le coefficient sous forme numérique: %.2f.\n", result / 100.0);
 
 }
 
@@ -256,7 +266,7 @@ void statistics(){
             break;
         if(strcasecmp(avions[i].status, "Disponible") == 0) 
             dispo++;
-        if(strcasecmp(avions[i].status, "Maintenance") == 0) 
+        if(strcasecmp(avions[i].status, "En maintenance") == 0) 
             maintenace++;
         if(strcasecmp(avions[i].status, "En vole") == 0) 
             vol++;
@@ -280,18 +290,18 @@ void statistics(){
 
     printf("\n");
     printf("-------------------------------------------\n");
-    printf("--Nombre totale d'avion dans le parc: %d\n", numberOfPlanesAvilable);
-    printf("--Nombre d'avions par status: \n");
+    printf("Nombre totale d'avion dans le parc: %d\n", numberOfPlanesAvilable);
+    printf("Nombre d'avions par status: \n");
     printf("----Disponible: %d\n", dispo);
     printf("----Maintenance: %d\n", maintenace);
     printf("----En vol: %d\n", vol);
-    printf("--Capacity totale de la flotte: %d\n", MAX_PLANE_NUMBER);
-    printf("--L'avion ayant la plus grande capacité: \n");
+    printf("Capacity totale de la flotte: %d\n", MAX_PLANE_NUMBER);
+    printf("L'avion ayant la plus grande capacite: \n");
     printf("----ID: %d\n", avions[minIndex].idAvion);
     printf("----Modele: %s\n", avions[maxIndex].modele);
     printf("----Capacite: %d\n", avions[maxIndex].capacite);
     printf("----Status: %s\n", avions[maxIndex].status);
-    printf("--L'avion ayant la plus petite capacité: \n");
+    printf("L'avion ayant la plus petite capacite: \n");
     printf("----ID: %d\n", avions[minIndex].idAvion);
     printf("----Modele: %s\n", avions[minIndex].modele);
     printf("----Capacite: %d\n", avions[minIndex].capacite);
