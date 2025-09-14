@@ -80,7 +80,7 @@ void modifyPlane(){
     char newModel[100], status[][20] = {"Disponible", "En maintenance", "En vol"};
     int newCapacity = 0, newStatus = 0;
 
-    printf("give the id for the plane you want to modify: ");
+    printf("Donnez l'id de l'avion que vous voulez modifier : ");
     id = acceptUserInput();
 
     for(i = 0; i < numberOfPlanesAvilable; i++){
@@ -97,11 +97,11 @@ void modifyPlane(){
         return;
     }
 
-    printf("Give the new value for modele (type: \"no-change\" to not change model): ");
+    printf("Donnez la nouvelle valeur pour le modele (tapez \"no-change\" pour ne pas changer le modele) :");
     scanf("%[^\n]", newModel);
-    printf("Give the new value for modele (type: -100 to not change capacity): ");
+    printf("Donnez la nouvelle valeur pour le modele (tapez \"-100\" pour ne pas changer la capacite) :");
     newCapacity = acceptUserInput();
-    printf("Give the new value for modele 0.Disponible 1.En maintenance 2.En vol (type: -100 to not change status): ");
+    printf("Donnez la nouvelle valeur pour le modele 0.Disponible 1.En maintenance 2.En vol (tapez \"-100\" pour ne pas changer le statut) :");
     newStatus = acceptUserInput();
 
     strcpy(avions[i].modele, strcasecmp(newModel, "no-change") == 0 ? prevPlane.modele : newModel);
@@ -114,7 +114,7 @@ void modifyPlane(){
         strcpy(avions[i].status, newStatus == -100 ? prevPlane.status : status[newStatus]);
     }
     avions[i].capacite = newCapacity == -100 ? prevPlane.capacite : newCapacity;
-    printf("The plane has been updated");
+    printf("L'avion a ete mis a jour!!");
     printf("\n");
 
 }
@@ -223,14 +223,10 @@ void searchForPlane(){
 }
 
 void sortplane(){
-    int i = 0, userChoice = 0; 
+    int userChoice = 0; 
 
     printf("Voulez vous triez les avions pas 1.Capacite ou 2.Model: ");
     userChoice = acceptUserInput();
-
-    while(i < MAX_PLANE_NUMBER && avions[i].modele[0] != '\0'){
-            i++;
-        }
 
         if(userChoice < 1 || userChoice > 2){
             printf("Choix invalid!!");
@@ -238,8 +234,8 @@ void sortplane(){
         }
 
         // search b usinn
-        for(int j = 0; j < i - 1; j++){
-            for(int z = 0; z < i - j - 1; z++){
+        for(int j = 0; j < numberOfPlanesAvilable - 1; j++){
+            for(int z = 0; z < numberOfPlanesAvilable - j - 1; z++){
                 if(userChoice == 1 ? (avions[z].capacite > avions[z + 1].capacite) : (strcasecmp(avions[z].modele, avions[z + 1].modele) > 0)){
                     struct Avion tmp = avions[z];
                     avions[z] = avions[z + 1];
@@ -251,7 +247,7 @@ void sortplane(){
         
    
     listPlane();
-    printf("Choix invalide!!\n");
+    printf("\n");
 
 }
 
