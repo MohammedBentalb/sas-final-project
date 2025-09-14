@@ -27,6 +27,7 @@ void managePlane(){
             break;
         case 2:
             printf("--->Modifier un avion.\n");
+            modifyPlane();
             break;
         case 3:    
             printf("--->Suprimer un avion.\n");

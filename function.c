@@ -4,7 +4,7 @@ void addPlane(){
 
     int userChoice = 0;
     char planeModele[100], planeStatus[100], planeEntranceDate[5];
-    char status[][20] = {"Disponible", "En maintenance", "En vole"};
+    char status[][20] = {"Disponible", "En maintenance", "En vol"};
     int userStatusChoice = -1, planeCapacity = 9;
     int i = 0;
     
@@ -72,6 +72,53 @@ void addPlane(){
 
 }
 
+void modifyPlane(){
+
+    struct Avion prevPlane = {0};
+    int id = 0, i = 0;
+    bool found = false;
+    char newModel[100], status[][20] = {"Disponible", "En maintenance", "En vol"};
+    int newCapacity = 0, newStatus = 0;
+
+    printf("give the id for the plane you want to modify: ");
+    id = acceptUserInput();
+
+    for(i = 0; i < numberOfPlanesAvilable; i++){
+        if(avions[i].idAvion == id){
+            found = true;
+            prevPlane = avions[i];
+            break;
+        }
+
+    }
+
+    if(!found){
+        printf("plane has not been found!!");
+        return;
+    }
+
+    printf("Give the new value for modele (type: \"no-change\" to not change model): ");
+    scanf("%[^\n]", newModel);
+    printf("Give the new value for modele (type: -100 to not change capacity): ");
+    newCapacity = acceptUserInput();
+    printf("Give the new value for modele 0.Disponible 1.En maintenance 2.En vol (type: -100 to not change status): ");
+    newStatus = acceptUserInput();
+
+    strcpy(avions[i].modele, strcasecmp(newModel, "no-change") == 0 ? prevPlane.modele : newModel);
+    if(newStatus > 2 || (newStatus < 0 && newStatus != -100)){
+        strcpy(avions[i].status, newStatus == -100 ? prevPlane.status : status[1]);
+        printf("!!!!!!!!!!WARNING!!!!!!!!!\n");
+        printf("VOUS AVEZ ENTRE UN CHOIX INVALIDE POUR LE STATUT, IL A DONC ÉTÉ PARAMÉTRÉ SUR \"EN MAINTENANCE\". VOUS POUVEZ LE MODIFIER PLUS TARD.\n");
+        printf("!!!!!!!!!!WARNING!!!!!!!!!\n");
+    }else{
+        strcpy(avions[i].status, newStatus == -100 ? prevPlane.status : status[newStatus]);
+    }
+    avions[i].capacite = newCapacity == -100 ? prevPlane.capacite : newCapacity;
+    printf("The plane has been updated");
+    printf("\n");
+
+}
+
 void listPlane(){
     int i = 0, count = 0;
      while(avions[i].modele[0] != '\0'){
@@ -123,7 +170,7 @@ void deletePlane(){
     // to de , solve
 
 
-    // removing the plaine if from the airport and decrementing the the number of plains available
+    // remmoving the plaine if from the airport and decrementing the the number of plains available
     for(int p = 0; p < MAX_PLANE_NUMBER; p++){
         if(aeroport.flotte[p] == target){
             aeroport.flotte[p] = 0;
@@ -190,6 +237,7 @@ void sortplane(){
             return;
         }
 
+        // search b usinn
         for(int j = 0; j < i - 1; j++){
             for(int z = 0; z < i - j - 1; z++){
                 if(userChoice == 1 ? (avions[z].capacite > avions[z + 1].capacite) : (strcasecmp(avions[z].modele, avions[z + 1].modele) > 0)){
@@ -268,7 +316,7 @@ void statistics(){
             dispo++;
         if(strcasecmp(avions[i].status, "En maintenance") == 0) 
             maintenace++;
-        if(strcasecmp(avions[i].status, "En vole") == 0) 
+        if(strcasecmp(avions[i].status, "En vol") == 0) 
             vol++;
         i++;
     }
